@@ -27,6 +27,7 @@ const modalStyle = {
 		right: '0px',
 		bottom: '0px',
 		background: '#fff',
+		border : 'none',
 		overflow: 'auto',
 		WebkitOverflowScrolling: 'touch',
 		borderRadius: '4px',
@@ -229,7 +230,14 @@ let Main_con_detail = (props) => {
 			</div>
 
 				<Modal style={modalStyle} isOpen = {modalIsOpen} onRequestClose = {() => setModalIsOpen(false)}>
-				This is Modal content
+				<p>NO. kr 202104010851000</p>
+				<p>커버 풀커버 알루미늄</p>
+				<p>암막율 68%</p>
+				<p>재구성 23%</p>
+				<p>재질 pory 100% </p>
+				<p>재료 Made in Korea</p>
+				<p>생산 Made in Korea</p>
+				<p>특징</p>
 				
 				</Modal>
 

@@ -259,7 +259,7 @@
     font-size: 12px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 5px;
+    padding-top: 4px;
     padding-bottom: 5px;
 
 }
@@ -276,6 +276,7 @@
 
 .slick-list{
     height: 40vh !important;
+  
 }
 
 
