@@ -7,6 +7,10 @@ html,body{
   src: url('./Fonts/NotoSansKR-Medium.woff2');
 }
 
+#demoID1313new{
+  background-color:transparent;
+}
+
 #root{
   height: 100%;
 }
@@ -96,12 +100,12 @@ html,body{
 
 @media (min-width:500px){
   .Community{
-    width:82%;
+    width:84%;
   }
 }
 @media (min-width:800px){
   .Community{
-    width:90%;
+    width:92%;
   }
 }
 

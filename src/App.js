@@ -12,15 +12,22 @@ import "./App.css";
 import Modal from 'react-modal';
 import Plan from "./gallay/Plan.js";
 import { Plan_modal, Plan_keyword_modal } from "./gallay/Plan_modal.js";
+import Slider from 'react-slider-modal';
+import 'animate.css/animate.min.css'
 
-
-
+const sliderStyle = {
+	width:"100%",
+	height:"400px",
+	right:"100px",
+	top:"50px"
+};
 
 function App() {
 
 	let navigate = useNavigate();
 	let [Plan_Check, plan_set_check] = useState("true");
 	let [Plan_Keyword_Check, Plan_set_check] = useState("true");
+	
 
 	return (
 		<div className="App">
@@ -101,6 +108,10 @@ function App() {
 }
 
 let Header = (props) => {
+
+
+
+	const [slideShow, setSlideShow] = useState(false);
 	if (props.Plan_Check == "true") {
 		return (
 			<div className="plan_header">
@@ -137,13 +148,33 @@ let Header = (props) => {
 			<div className="plan_header">
 				<img
 					onClick={() => {
-						props.navigate(-1);
+						setSlideShow(!slideShow);
 					}}
 					src={process.env.PUBLIC_URL + "/images/menu_white.png"}
 				></img>
 				<p style={{ marginRight: "20px" }}>
 					플랜 갤러리<button className="header_button">asdasd</button>
 				</p>
+
+				<Slider
+        id="demoID1313"
+        className=""
+        direction="left"
+        size="small"
+        animation="slide"
+        closeModal={(e) => {
+          setSlideShow(e);
+        }}
+        toggle={slideShow}
+     
+       
+      >
+        <div className="slider-container"  style={{background:"black"}}>
+			<Fashions></Fashions>
+			<Community></Community>
+			<Sns></Sns>
+        </div>
+      </Slider>
 			</div>
 		);
 	} else if (props.Plan_fabric_Check_detail == "true") {
@@ -154,10 +185,12 @@ let Header = (props) => {
 		}
 
 		return (
+			
 			<div className="plan_header">
 				<img
 					onClick={() => {
 						props.navigate(-1);
+						
 					}}
 					src={process.env.PUBLIC_URL + "/images/left_arrow_white.png"}
 				></img>
@@ -168,8 +201,31 @@ let Header = (props) => {
 		return (
 			<div className="plan_header">
 				<span style={{ float: "left", margin: "10px" }}>
-					<img src={process.env.PUBLIC_URL + "/images/menu_white.png"}></img>
+					<img src={process.env.PUBLIC_URL + "/images/menu_white.png"} onClick = {() => {
+						setSlideShow(!slideShow);
+					}}></img>
 				</span>
+
+	<Slider
+        id="demoID1313"
+        className=""
+        direction="left"
+        size="small"
+        animation="slide"
+        closeModal={(e) => {
+          setSlideShow(e);
+        }}
+        toggle={slideShow}
+     
+       
+      >
+        <div className="slider-container"  style={{background:"black"}}>
+			<Fashions></Fashions>
+			<Community></Community>
+			<Sns></Sns>
+        </div>
+      </Slider>
+
 				<p style={{ marginRight: "20px" }}>플랜 갤러리</p>
 			</div>
 		);

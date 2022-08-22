@@ -127,7 +127,7 @@ function Plan(props) {
 			</div>
 		);
 	} else if (modal_check === "fabric_detail") {
-		console.log(modal_check);
+		
 		return (
 			<div className="plan_main">
 				<Main_con_detail
@@ -209,6 +209,8 @@ let Part_plan_fabric = (props) => {
 };
 
 let Main_con_detail = (props) => {
+
+	let [change_div, setChange_div] = useState('detail_image_0');
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 
 	let sliderItem = ["1", "2", "3", "4", "5"];
@@ -223,6 +225,26 @@ let Main_con_detail = (props) => {
 		afterChange: (pageNum) => setPageNum(pageNum + 1),
 	};
 
+	screen.orientation.addEventListener('change', function(){
+		let change_type = screen.orientation.type;
+		
+
+		if(change_type == 'portrait-primary')
+		{
+		
+			setChange_div('detail_image_0')
+			
+		}
+		else
+		{
+			
+			setChange_div('detail_image_1');
+		
+
+		}
+		
+	});
+	
 	return (
 		<div className="part_plan_detail">
 			<div style={{ textAlign: "right" }}>
@@ -241,13 +263,16 @@ let Main_con_detail = (props) => {
 				
 				</Modal>
 
+		
+
 			<Slider {...settings}>
-				{sliderItem.map((item,key) => {
 				
+				{sliderItem.map((item,key) => {
 					return (
 						<div key = {key}>
 							<div
 								className="detail_image"
+								id={change_div}
 								style={{
 									backgroundImage: `url(${
 										process.env.PUBLIC_URL + "/images/image_2.png"
@@ -269,9 +294,43 @@ let Main_con_detail = (props) => {
 
 let Colors = (props) => {
 
-	
+	const [change,setChange] = useState('');
 
-	let Color = ["화이트", "아이보리",  "그레이" , "옐로우", "브라운", "딥그린", "블랙", "바이올렛"];
+	const color_array = [
+	{
+		id: 1,
+		index: "화이트",
+		color: "white"
+
+	},
+
+	{
+		id: 2,
+		index: "아이보리",
+		color:"ivory"
+	},
+
+	{
+		id: 3,
+		index : "그레이",
+		color: "gray"
+	},
+
+	{
+		id: 4,
+		index : "옐로우",
+		color: "yellow"
+	},
+
+	{
+		id: 5,
+		index : "브라운",
+		color:"brown"
+	}
+
+
+]
+
 
 	const settings = {
 		infinite: true,
@@ -283,17 +342,20 @@ let Colors = (props) => {
 
 	return (
 		<div style={{ position: 'relative' ,top: '40px'}}>
-			<Slider {...settings}>
 			{
-				Color.map((index,key) => {
+				color_array.map((index,key) => {
 					return (
-						<div key = {key}>
-							<span  className = "colors_name">{index}</span>
-						</div>
+						
+							<span  className = "colors_name" id = {change} onClick= { () => {
+								setChange(index.color);
+								console.log(index.color);
+							}}
+								
+							  key = {key}>{index.index}</span>
+						
 					)
 				})
 			}
-			</Slider>
 			</div>
 	)
 }
